@@ -1,0 +1,19 @@
+{
+  "browser": false,
+  "indent": 4,
+  "strict": false,
+  "globals": {
+    "Ti": false,
+    "Titanium": false,
+    "Alloy": false,
+    "$": false,
+    "_": true,
+    "L": false,
+    "OS_IOS": false,
+    "OS_ANDROID": false,
+    "ENV_TEST": false,
+    "ENV_DEV": false,
+    "ENV_PRODUCTION": false
+  },
+  "node": true
+}

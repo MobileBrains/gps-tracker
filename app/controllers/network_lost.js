@@ -1,0 +1,1 @@
+require('notifications').show(L('network_lost'));

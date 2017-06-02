@@ -1,0 +1,14 @@
+{
+    "folders":
+    [
+        {
+            "follow_symlinks": true,
+            "path": ".",
+            "name": "Titanium App",
+            "folder_exclude_patterns": ["Resources", "build"],
+        }
+    ],
+    "settings": {
+        "tab_size": 4
+    }
+}

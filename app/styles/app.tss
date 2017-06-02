@@ -1,0 +1,12 @@
+'Window[platform=android]':{
+    title: L('app_name'),
+    exitOnClose: true
+}
+
+'Window': {
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL,
+    layout: 'composite',
+    backgroundColor: Alloy.Globals.colors.white,
+    orientationModes: [ Titanium.UI.PORTRAIT ] // UI restricted to portrait mode
+}

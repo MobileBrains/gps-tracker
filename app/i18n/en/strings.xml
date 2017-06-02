@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <string name="app_name">GPS Tracker</string>
+  <string name="accept">Accept</string>
+  <string name="cancel">Cancel</string>
+  <string name="success">Success</string>
+  <string name="error">Error</string>
+  <string name="send">Send</string>
+  <string name="loader_default">Loading...</string>
+  <string name="loader_gps">Waiting for GPS data...</string>
+  <string name="dialog_default">Select an option</string>
+</resources>

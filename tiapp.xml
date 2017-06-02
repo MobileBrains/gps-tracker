@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ti:app xmlns:ti="http://ti.appcelerator.org">
+	<id>com.mobilebrains.gpstracker</id>
+	<name>gps-tracker-app</name>
+	<version>1.0</version>
+	<publisher>mobilebrains</publisher>
+	<url>www.mobilebrains.com</url>
+	<description/>
+    <copyright>not specified</copyright>
+	<icon>appicon.png</icon>
+	<fullscreen>false</fullscreen>
+	<navbar-hidden>false</navbar-hidden>
+	<analytics>true</analytics>
+	<guid>8c353dde-748e-4bfa-a78f-03ed43c9821d</guid>
+    <property name="ti.ui.defaultunit" type="string">dip</property>
+    <property name="run-on-main-thread" type="bool">true</property>
+    <property name="ti.android.debug" type="boolean">false</property>
+    <android xmlns:android="http://schemas.android.com/apk/res/android">
+        <manifest android:versionCode="110" android:versionName="1.1.0">
+            <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="24"/>
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+        </manifest>
+        <services>
+            <service url='gps_job.js' type='interval'/>
+        </services>
+    </android>
+    <modules>
+        <module platform="android" version="1.7.2">com.alcoapps.actionbarextras</module>
+    </modules>
+    <deployment-targets>
+    	<target device="android">true</target>
+    	<target device="ipad">false</target>
+    	<target device="iphone">false</target>
+    	<target device="mobileweb">false</target>
+    </deployment-targets>
+    <sdk-version>6.1.0.GA</sdk-version>
+    <plugins><plugin version="1.0">ti.alloy</plugin>
+    </plugins>
+</ti:app>

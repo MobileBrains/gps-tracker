@@ -1,0 +1,9 @@
+'#info': {
+    top: '30dip',
+    text: L('loader_gps'),
+    color: Alloy.Globals.colors.black,
+    font: {
+        fontSize: '18dip',
+        fontFamily: 'DroidSans'
+    }
+},
