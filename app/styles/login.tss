@@ -1,0 +1,27 @@
+'#LoginWindow[platform=android]': {
+    navBarHidden: true,
+    tabBarHidden: true,
+    backgroundColor: Alloy.Globals.colors.black,
+    windowSoftInputMode: Ti.UI.Android.SOFT_INPUT_ADJUST_RESIZE
+},
+
+'#userIcon': {
+    text: Alloy.Globals.icons.user
+},
+
+'#passIcon': {
+    text: Alloy.Globals.icons.password
+},
+
+'#user': {
+    hintText: L('user')
+},
+
+'#pass': {
+    passwordMask: true,
+    hintText: L('pass')
+},
+
+'#send': {
+    title: L('send')
+}

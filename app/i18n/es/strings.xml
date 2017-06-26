@@ -9,4 +9,8 @@
   <string name="loader_default">Cargando...</string>
   <string name="loader_gps">Cargango información GPS...</string>
   <string name="dialog_default">Seleccione una opción</string>
+  <string name="user">Usuario</string>
+  <string name="pass">Contraseña</string>
+  <string name="empty_user">Ingresa tu usuario.</string>
+  <string name="empty_pass">Ingresa tu contraseña.</string>
 </resources>

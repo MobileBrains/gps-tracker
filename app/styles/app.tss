@@ -10,3 +10,72 @@
     backgroundColor: Alloy.Globals.colors.white,
     orientationModes: [ Titanium.UI.PORTRAIT ] // UI restricted to portrait mode
 }
+
+'ScrollView': {
+    height: Ti.UI.FILL,
+    width: Ti.UI.FILL,
+    contentWidth: Ti.UI.FILL,
+    contentHeight: Ti.UI.FILL,
+    showVerticalScrollIndicator: false,
+    showHorizontalScrollIndicator: false,
+    zIndex: 1
+}
+
+'.fields': {
+    top: '40dip',
+    layout: 'vertical',
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE
+}
+
+'.field': {
+    top: '10dip',
+    layout: 'composite',
+    width: '90%',
+    height: '40dip',
+    borderRadius: 10,
+    backgroundColor: Alloy.Globals.colors.white
+}
+
+'.fieldIcon': {
+    left: 0,
+    width: '40dip',
+    height: '40dip',
+    backgroundColor: Alloy.Globals.colors.white,
+    color: Alloy.Globals.colors.black,
+    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+    font: {
+        fontSize: '18dip',
+        fontFamily: 'icomoon'
+    }
+}
+
+'.fieldText': {
+    left: '45dip',
+    width: Ti.UI.FILL,
+    height: '40dip',
+    backgroundColor: Alloy.Globals.colors.white,
+    color: Alloy.Globals.colors.black,
+    returnKeyType: Ti.UI.RETURNKEY_DONE,
+    hintTextColor: Alloy.Globals.colors.black,
+    font: {
+        fontSize: '18dip',
+        fontFamily: 'DroidSans'
+    }
+}
+
+'.button': {
+    top: '20dip',
+    bottom: '20dip',
+    style: 'none',
+    width: '75%',
+    height: '40dip',
+    backgroundColor: Alloy.Globals.colors.white,
+    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+    color: Alloy.Globals.colors.black,
+    borderRadius: 10,
+    font: {
+        fontSize: '18dip',
+        fontFamily: 'DroidSans'
+    }
+}
