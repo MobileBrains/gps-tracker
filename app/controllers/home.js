@@ -1,5 +1,6 @@
 var map = require('ti.map');
 var mapView;
+var centerMapFlag = 0;
 
 if ( OS_ANDROID ) {
     require('android_actionbar').build({
@@ -25,21 +26,15 @@ var startMap = function() {
 
     switch (isGplay){
         case map.SUCCESS:
-            var region = {
-                latitude: 5.0686966,
-                longitude: -75.5186625,
-                latitudeDelta : 0.15,
-                longitudeDelta : 0.15,
-                zoom: 10
-            };
+            var location = Ti.App.Properties.getObject("current_location", null);
+            console.error("startMap::current_location ", location);
 
             //Creacion del mapa
             mapView = map.createView({
-                userLocation: true,
-                mapType: map.NORMAL_TYPE,
                 animate: true,
-                region: region,
                 regionFit : true,
+                userLocation: true,
+                mapType: map.NORMAL_TYPE,//map.HYBRID_TYPE,
                 height: Ti.UI.FILL,
                 width: Ti.UI.FILL,
                 top: 0,
@@ -47,8 +42,6 @@ var startMap = function() {
             });
 
             win.add(mapView);
-
-            mapView.setLocation(region);
 
             break;
         case map.SERVICE_MISSING:
@@ -79,15 +72,29 @@ var startMap = function() {
 
 var updateMap = function() {
     var location = Ti.App.Properties.getObject("current_location", null);
+    console.error("updateMap::current_location ", location);
 
     if (location) {
         var marker = map.createAnnotation({
             latitude: location.latitude,
             longitude: location.longitude,
-            title: 'Location title',
-            subtitle: 'subtitle'
+            pincolor: map.ANNOTATION_AZURE,
+            title: location.title,
+            subtitle: location.subtitle
         });
         mapView.addAnnotation(marker);
+
+        var region = {
+            latitude: location.latitude,
+            longitude: location.longitude,
+            latitudeDelta: location.latitudeDelta,
+            longitudeDelta: location.longitudeDelta
+        };
+
+        if (centerMapFlag === 0) {
+            mapView.setLocation(region);
+            centerMapFlag = 1;
+        }
     }
 };
 
@@ -112,6 +119,8 @@ var updateLocation = function(args){
                 Ti.App.Properties.setObject("current_location", {
                     longitude: e.coords.longitude,
                     latitude: e.coords.latitude,
+                    title: 'Location title',
+                    subtitle: 'Subtitle',
                     latitudeDelta : 0.15,
                     longitudeDelta : 0.15
                 });
@@ -130,10 +139,6 @@ var updateLocation = function(args){
                     success: function(response) {
                         console.error("updateLocation response success: ", response);
                         Alloy.Globals.LO.hide();
-                        require('dialogs').openDialog({
-                            message: 'Ubicacion actualizada con exito',//L('gps_update_success'),
-                            title: L('success')
-                        });
                     },
                     failure: function(response) {
                         console.error("updateLocation response error: ", response);
