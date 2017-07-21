@@ -1,0 +1,17 @@
+<Alloy>
+    <Window id="LoginWindow">
+        <ScrollView id="scrollView">
+          <View class="fields">
+            <View class="field">
+                <Label class="fieldIcon" id="userIcon"/>
+                <TextField class="fieldText" id="email"/>
+            </View>
+            <View class="field">
+                <Label class="fieldIcon" id="passIcon"/>
+                <TextField class="fieldText" id="pass"/>
+            </View>
+            <Button class="button" id="send"/>
+          </View>
+        </ScrollView>
+    </Window>
+</Alloy>

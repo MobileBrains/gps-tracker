@@ -9,4 +9,10 @@
   <string name="loader_default">Loading...</string>
   <string name="loader_gps">Waiting for GPS data...</string>
   <string name="dialog_default">Select an option</string>
+  <string name="email">Email</string>
+  <string name="pass">Password</string>
+  <string name="empty_email">Enter your email.</string>
+  <string name="empty_pass">Enter your password.</string>
+  <string name="logout">Logout</string>
+  <string name="logout_confirmation">Are you sure you want to logout?</string>
 </resources>
