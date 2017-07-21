@@ -15,4 +15,6 @@
   <string name="empty_pass">Ingresa tu contraseña.</string>
   <string name="logout">Cerrar sesión</string>
   <string name="logout_confirmation">¿Estas seguro que deseas cerrar sesión?</string>
+  <string name="toggle_map">Alternar Mapa</string>
+  <string name="update_gps">Actualizar Ubiación</string>
 </resources>

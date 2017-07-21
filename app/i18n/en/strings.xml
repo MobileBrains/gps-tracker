@@ -15,4 +15,6 @@
   <string name="empty_pass">Enter your password.</string>
   <string name="logout">Logout</string>
   <string name="logout_confirmation">Are you sure you want to logout?</string>
+  <string name="toggle_map">Toogle Map</string>
+  <string name="update_gps">Update Location</string>
 </resources>
