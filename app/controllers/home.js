@@ -2,6 +2,8 @@ var win = $.HomeWindow;
 var map = require('ti.map');
 var mapView;
 var centerMapFlag = 0;
+var updateMapInterval;
+var showMap = false;
 var currentUser = Ti.App.Properties.getObject('current_user', {});
 
 if ( OS_ANDROID ) {
@@ -13,7 +15,15 @@ if ( OS_ANDROID ) {
         menuItems: [
             {
                 id: 101,
-                title: 'Actualizar ubicacion', // L('update_gps')
+                title: L('toggle_map'),
+                icon: Ti.Android.R.drawable.ic_menu_mapmode,
+                callback: function(){
+                    toggleMap();
+                }
+            },
+            {
+                id: 102,
+                title: L('update_gps'),
                 icon: Ti.Android.R.drawable.ic_menu_mylocation,
                 callback: function(){
                     updateLocation();
@@ -69,6 +79,8 @@ var startMap = function() {
 
             win.add(mapView);
 
+            updateMap();
+
             break;
         case map.SERVICE_MISSING:
             Ti.API.info("No hay servicios de google play");
@@ -94,6 +106,10 @@ var startMap = function() {
             Ti.API.info("Error desconocido");
             break;
     };
+};
+
+var stopMap = function() {
+    win.remove(mapView);
 };
 
 var updateMap = function() {
@@ -124,13 +140,25 @@ var updateMap = function() {
     }
 };
 
-setInterval(function(){ updateMap(); }, 3000);
+var updateLabel = function() {
+    var location = Ti.App.Properties.getObject("current_location", null);
 
+    if (location) {
+        $.info.setText('longitude: ' + location.longitude + ' latitude: ' + location.latitude);
+    }
+};
+
+updateMapInterval = setInterval(function(){
+    if (showMap === true) {
+        updateMap();
+    } else {
+        updateLabel();
+    }
+}, 3000);
 
 var run = function() {
     Alloy.Globals.LO.show(L('loader_default'), true);
     require('gps_service').init();
-    startMap();
 }();
 
 var updateLocation = function(args){
@@ -138,7 +166,6 @@ var updateLocation = function(args){
     require('gps_tracker').getCurrentPosition(function(e){
         console.error("GPS DATA: ", e);
         if (!e.error) {
-            $.info.setText('longitude: ' + e.coords.longitude + ' latitude: ' + e.coords.latitude);//L('gps_info'),
             var location = Ti.App.Properties.getObject("current_location", null);
 
             if (location.longitude !== e.coords.longitude || location.latitude !== e.coords.latitude) {
@@ -150,16 +177,18 @@ var updateLocation = function(args){
                     latitudeDelta : 0.15,
                     longitudeDelta : 0.15
                 });
-                updateMap();
+                if (showMap === true) {
+                    updateMap();
+                }
 
                 require('http').request({
                     timeout: 10000,
                     type: 'POST',
                     format: 'JSON',
+                    oauth_type: 'userToken',
                     data: {
                         longitude: e.coords.longitude,
-                        latitude: e.coords.latitude,
-                        vehicle_id: 1
+                        latitude: e.coords.latitude
                     },
                     url: Alloy.Globals.Secrets.backend.url + '/viveApi/v1/updateLocation',
                     success: function(response) {

@@ -6,6 +6,7 @@ Alloy.Globals.APP.init();
 // redirect based on login
 require('oauth').validateToken({
     success: function() {
+        Ti.App.Properties.setBool("location_flag", true);
         Alloy.Globals.APP.navigatorOpen('home');
     },
     error: function(){
