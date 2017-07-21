@@ -19,6 +19,9 @@
         <manifest android:versionCode="110" android:versionName="1.1.0">
             <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="24"/>
             <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+            <application>
+                <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyByzPXVCPap1XgNTmtqbCQNH7YQVuOK6Gw"/>
+            </application>
         </manifest>
         <services>
             <service url='gps_job.js' type='interval'/>
@@ -26,6 +29,7 @@
     </android>
     <modules>
         <module platform="android" version="1.7.2">com.alcoapps.actionbarextras</module>
+        <module platform="android">ti.map</module>
     </modules>
     <deployment-targets>
     	<target device="android">true</target>

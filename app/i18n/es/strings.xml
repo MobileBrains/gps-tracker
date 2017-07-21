@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
   <string name="app_name">GPS Tracker</string>
-  <string name="accept">Aceptar</string>
+  <!-- <string name="accept">Aceptar</string> -->
   <string name="cancel">Cancelar</string>
   <string name="success">Exito</string>
   <string name="error">Error</string>

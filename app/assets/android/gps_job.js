@@ -9,6 +9,17 @@ require('gps_tracker').startTracking(function(response){
 require('gps_tracker').getCurrentPosition(function(e){
     console.error("GPS DATA: ", e);
     if (!e.error) {
+        Ti.App.Properties.setObject("current_location", {
+            longitude: e.coords.longitude,
+            latitude: e.coords.latitude,
+            latitudeDelta : 0.15,
+            longitudeDelta : 0.15,
+            title: 'Location title',
+            subtitle: 'Subtitle'
+        });
+
+        console.error("GPS Job::current_location ", Ti.App.Properties.getObject("current_location", null));
+
         require('http').request({
             timeout: 10000,
             type: 'POST',
