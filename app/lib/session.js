@@ -2,8 +2,14 @@ var parseUserObject = function(user) {
     var current_user = Ti.App.Properties.getObject('current_user', {});
     current_user = _.extend(current_user, {
         id: user.id,
+        name: user.name,
         email: user.email,
-        name: user.name
+        lateral: user.lateral,
+        registration_plate: user.registration_plate,
+        latitude: user.latitude,
+        longitude: user.longitude,
+        last_location: user.last_location,
+        company_id: user.company_id
     });
 
     Ti.App.Properties.setObject('current_user', current_user);
@@ -25,9 +31,9 @@ exports.login = function(args) {
         type: 'POST',
         format: 'JSON',
         oauth_type: 'appToken',
-        url: Alloy.Globals.Secrets.backend.url + '/api/v1/sessions/login',
+        url: Alloy.Globals.Secrets.backend.url + '/viveApi/v1/sessions/vehiclelogin',
         data: {
-            user: args.user,
+            email: args.email,
             pass: args.pass,
         },
         success: function(response) {
@@ -59,7 +65,7 @@ exports.logout = function(args) {
             type: 'POST',
             format: 'JSON',
             oauth_type: 'appToken',
-            url: Alloy.Globals.Secrets.backend.url + '/api/v1/sessions/logout',
+            url: Alloy.Globals.Secrets.backend.url + '/viveApi/v1/sessions/logout',
             data: {
                 token: userAccessToken
             },

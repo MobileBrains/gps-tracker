@@ -4,7 +4,7 @@
           <View class="fields">
             <View class="field">
                 <Label class="fieldIcon" id="userIcon"/>
-                <TextField class="fieldText" id="user"/>
+                <TextField class="fieldText" id="email"/>
             </View>
             <View class="field">
                 <Label class="fieldIcon" id="passIcon"/>

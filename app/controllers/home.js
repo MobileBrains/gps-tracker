@@ -1,12 +1,15 @@
+var win = $.HomeWindow;
 var map = require('ti.map');
 var mapView;
 var centerMapFlag = 0;
+var currentUser = Ti.App.Properties.getObject('current_user', {});
 
 if ( OS_ANDROID ) {
     require('android_actionbar').build({
-        window: $.HomeWindow,
+        window: win,
         displayHomeAsUp: false,
-        // menuItemsBehavior: Ti.Android.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW,
+        title: currentUser.name + ': ' + currentUser.registration_plate,
+        menuItemsBehavior: currentUser.name.length >= 20 ? Ti.Android.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW : null,
         menuItems: [
             {
                 id: 101,
@@ -15,21 +18,44 @@ if ( OS_ANDROID ) {
                 callback: function(){
                     updateLocation();
                 }
+            },
+            {
+                id: 103,
+                title: L('logout'),
+                icon: Ti.Android.R.drawable.ic_menu_more,//ic_menu_delete,//ic_delete,//ic_menu_close_clear_cancel,
+                callback: function(){
+                    require('dialogs').openOptionsDialog({
+                        options: {
+                            buttonNames: [L('accept')],
+                            message: L('logout_confirmation'),
+                            title: L('app_name')
+                        },
+                        callback: function(evt){
+                            if (evt.index !== evt.source.cancel) {
+                                Alloy.Globals.LO.show(L('loader_default'), false);
+                                require('session').logout({
+                                    success: function(){
+                                        Alloy.Globals.LO.hide();
+                                        Alloy.Globals.APP.navigatorOpen('login', { navigationWindow: false });
+                                    },
+                                    error: function(){
+                                        Alloy.Globals.LO.hide();
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
             }
         ]
     });
 }
 
 var startMap = function() {
-    var win = $.HomeWindow;
     var isGplay = map.isGooglePlayServicesAvailable();
 
     switch (isGplay){
         case map.SUCCESS:
-            var location = Ti.App.Properties.getObject("current_location", null);
-            console.error("startMap::current_location ", location);
-
-            //Creacion del mapa
             mapView = map.createView({
                 animate: true,
                 regionFit : true,

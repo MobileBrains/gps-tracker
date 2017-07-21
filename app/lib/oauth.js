@@ -44,7 +44,7 @@ exports.validateToken = function(args){
             type: 'POST',
             format: 'JSON',
             oauth_type: 'appToken',
-            url: baseUrl + '/api/v1/sessions/validate_token',
+            url: baseUrl + '/viveApi/v1/sessions/validate_token',
             data: {
                 token: userAccessToken
             },

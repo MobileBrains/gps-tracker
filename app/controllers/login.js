@@ -1,10 +1,10 @@
 function clickHandler(){
-    var user = $.user.getValue();
+    var email = $.email.getValue();
     var pass  = $.pass.getValue();
 
-    if ( user === null || user === "" ) {
+    if ( email === null || email === "" ) {
         require('dialogs').openDialog({
-            message: L('empty_user'),
+            message: L('empty_email'),
             title: L('app_name')
         });
         return;
@@ -19,7 +19,7 @@ function clickHandler(){
     Alloy.Globals.LO.show(L('loader_default'), false);
 
     require('session').login({
-        user: user,
+        email: email,
         pass: pass,
         success: function() {
             Alloy.Globals.LO.hide();

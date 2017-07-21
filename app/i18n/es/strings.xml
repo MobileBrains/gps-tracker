@@ -9,8 +9,10 @@
   <string name="loader_default">Cargando...</string>
   <string name="loader_gps">Cargango información GPS...</string>
   <string name="dialog_default">Seleccione una opción</string>
-  <string name="user">Usuario</string>
+  <string name="email">Correo electrónico</string>
   <string name="pass">Contraseña</string>
-  <string name="empty_user">Ingresa tu usuario.</string>
+  <string name="empty_email">Ingresa tu correo electrónico.</string>
   <string name="empty_pass">Ingresa tu contraseña.</string>
+  <string name="logout">Cerrar sesión</string>
+  <string name="logout_confirmation">¿Estas seguro que deseas cerrar sesión?</string>
 </resources>

@@ -1,5 +1,5 @@
 // try to get a new app access token
-require('oauth').appToken({ forceNew: false });
+require('oauth').appToken({ forceNew: true });
 
 Alloy.Globals.APP.init();
 

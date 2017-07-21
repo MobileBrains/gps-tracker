@@ -13,8 +13,8 @@
     text: Alloy.Globals.icons.password
 },
 
-'#user': {
-    hintText: L('user')
+'#email': {
+    hintText: L('email')
 },
 
 '#pass': {
